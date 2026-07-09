@@ -6,7 +6,7 @@ from flask_gravatar import Gravatar
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import Integer, String, Text
+from sqlalchemy import Integer, String, Text, ForeignKey
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 # Import your forms from the forms.py
@@ -31,25 +31,30 @@ db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 
 
+# TODO: Create a User table for all your registered users.
+class User(UserMixin, db.Model, Base):
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    email: Mapped[str] = mapped_column(String(150), unique=True, nullable=False)
+    name: Mapped[str] = mapped_column(String(150), nullable=False)
+    password: Mapped[str] = mapped_column(String(250), nullable=False)
+
+    posts: Mapped[list["BlogPost"]] = relationship(back_populates="author")
+
 # CONFIGURE TABLES
-class BlogPost(db.Model):
+class BlogPost(db.Model, Base):
     __tablename__ = "blog_posts"
+
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     title: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
     subtitle: Mapped[str] = mapped_column(String(250), nullable=False)
     date: Mapped[str] = mapped_column(String(250), nullable=False)
     body: Mapped[str] = mapped_column(Text, nullable=False)
-    author: Mapped[str] = mapped_column(String(250), nullable=False)
+    author_id: Mapped[int] = mapped_column(db.ForeignKey("users.id"))
     img_url: Mapped[str] = mapped_column(String(250), nullable=False)
 
-
-# TODO: Create a User table for all your registered users.
-class User(UserMixin, db.Model):
-    __tablename__ = "users"
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    email: Mapped[str] = mapped_column(String(150), unique=True, nullable=False)
-    name: Mapped[str] = mapped_column(String(150), nullable=False)
-    password: Mapped[str] = mapped_column(String(250), nullable=False)
+    author: Mapped["User"] = relationship(back_populates="posts")
 
 with app.app_context():
     db.create_all()
