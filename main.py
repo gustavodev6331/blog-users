@@ -13,9 +13,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 import os
 
-#ADMIN LOGIN: admin@gmail.com - password: admin12345 - name: Gustavo
 
-# 8BYkEfBA6O6donzWlSihBXox7C0sKR6b
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 ckeditor = CKEditor(app)
