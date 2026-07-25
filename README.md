@@ -6,7 +6,7 @@ The project showcases user authentication, CRUD operations, relational database 
 
 ## Live Demo
 
-https://free-blog-xy55.onrender.com
+free-blog-xy55.onrender.com
 
 <img width="1465" height="837" alt="Screenshot 2026-07-23 at 7 33 43 PM" src="https://github.com/user-attachments/assets/cc18c112-a776-4443-8544-5f39d8d94e7f" />
 
