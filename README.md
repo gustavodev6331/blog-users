@@ -4,17 +4,17 @@ A blog platform built with Flask where users can register, log in, create blog p
 
 The project showcases user authentication, CRUD operations, relational database modeling, and SQLite integration. 
 
+## Live Demo
+
+https://free-blog-xy55.onrender.com
+
 <img width="1465" height="837" alt="Screenshot 2026-07-23 at 7 33 43 PM" src="https://github.com/user-attachments/assets/cc18c112-a776-4443-8544-5f39d8d94e7f" />
 
-
-
 <img width="1467" height="835" alt="Screenshot 2026-07-23 at 7 34 34 PM" src="https://github.com/user-attachments/assets/e93dcd67-809d-469b-9d01-0fbaddf2b2eb" />
-
 
 <img width="1463" height="870" alt="Screenshot 2026-07-23 at 6 06 28 PM" src="https://github.com/user-attachments/assets/fc11b86a-f522-41fd-8b10-bfc1c8d39a62" />
 
 <img width="1466" height="866" alt="Screenshot 2026-07-23 at 6 07 25 PM" src="https://github.com/user-attachments/assets/1af66652-c95c-4130-8d41-db4d8e9c010b" />
-
 
 ## Features
 
