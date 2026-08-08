@@ -1,5 +1,5 @@
 from datetime import date
-from flask import Flask, abort, render_template, redirect, url_for, flash, request
+from flask import Flask, abort, render_template, redirect, url_for, flash
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from flask_gravatar import Gravatar
@@ -102,10 +102,10 @@ def register():
                 salt_length=8)
 
         )
-        result = db.session.execute(db.select(User).where(User.email == request.form['email']))
+        result = db.session.execute(db.select(User).where(User.email == form.email.data))
         user = result.scalar()
         if user:
-            flash('Email already registered, please login')
+            flash('Email already registered, please login.')
             return redirect(url_for('login'), )
         else:
             db.session.add(new_user)
