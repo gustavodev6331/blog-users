@@ -139,7 +139,7 @@ def login():
             login_user(user)
             return redirect(url_for('get_all_posts'))
         else:
-            flash('Invalid Password. Please try again')
+            flash('Invalid Password. Please try another password')
             return redirect(url_for('login'))
 
     return render_template("login.html", form=form, logged_in=current_user.is_authenticated)
